@@ -26,6 +26,24 @@ module.exports = () => {
         swSrc: './src/sw.js',
         swDest: 'service-worker.js',
       }),
+      new WebpackPwaManifest(
+        {
+          filename: "manifest.json",
+          name: "App",
+          orientation: "portrait",
+          display: "standalone",
+          start_url: "./",
+          crossorigin: null,
+          inject: true,
+          fingerprints: true,
+          ios: false,
+          publicPath: "./",
+          includeDirectory: true,
+          icons: {
+            src: path.resolve('./src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+        }
+      })
     ],
 
     module: {
