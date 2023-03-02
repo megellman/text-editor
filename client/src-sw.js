@@ -26,7 +26,6 @@ warmStrategyCache({
 
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
-// TODO: Implement asset caching
 registerRoute(
   ({ request }) => request.destination === 'worker' || request.destination === 'style' || request.destination === 'image' || request.destination === 'script',
   new CacheFirst({
@@ -37,7 +36,7 @@ registerRoute(
       }),
       new ExpirationPlugin({
         maxEntries: 60,
-        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+        maxAgeSeconds: 30 * 24 * 60 * 60, 
       }),
     ],
   })
