@@ -32,9 +32,12 @@ module.exports = () => {
       new WebpackPwaManifest(
         {
           filename: "manifest.json",
-          name: "Text Editor",
-          short_name: "Editor",
+          name: "Just Another Text Editor",
+          short_name: "J.A.T.E",
+          description: "Takes notes with JavaScript syntax highlighting!",
           inject: true,
+          orientation: 'portrait',
+          display: "standalone",
           fingerprints: false,
           background_color: '#225ca3',
           theme_color: '#225ca3',
