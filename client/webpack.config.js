@@ -11,7 +11,10 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js'
+      install: './src/js/install.js',
+      database: './src/js/database.js',
+      editor: './src/js/editor.js',
+      header: './src/js/header.js'
     },
     output: {
       filename: '[name].bundle.js',
@@ -23,25 +26,23 @@ module.exports = () => {
         title: 'Webpack Plugin'
       }),
       new InjectManifest({
-        swSrc: './src/sw.js',
-        swDest: 'service-worker.js',
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
       }),
       new WebpackPwaManifest(
         {
           filename: "manifest.json",
-          name: "App",
-          orientation: "portrait",
-          display: "standalone",
-          start_url: "./",
-          crossorigin: null,
+          name: "Text Editor",
+          short_name: "Editor",
           inject: true,
-          fingerprints: true,
-          ios: false,
+          fingerprints: false,
+          background_color: '#225ca3',
+          theme_color: '#225ca3',
           publicPath: "./",
-          includeDirectory: true,
           icons: {
             src: path.resolve('./src/images/logo.png'),
-            sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+            sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+            destination: path.join('assets', 'icons'),
         }
       })
     ],
